@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos Braga - Advogado</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0f172a;       
+            --bg-light: #1e293b;      
+            --accent: #d4af37;        
+            --accent-light: #fef08a;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Estrutura Principal */
+        .content-wrapper {
+            background-color: var(--bg-dark);
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem 0;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 10px 20px rgba(212, 175, 55, 0.1);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        /* Carrossel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 500px;
+            margin: 0 auto 4rem auto;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--accent);
+            padding: 1rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
+
+        .prev { left: 0; }
+        .next { right: 0; }
+
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--accent);
+            transform: scale(1.3);
+        }
+
+        /* Seção Sobre Mim */
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto 6rem auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 0 2rem;
+            overflow: hidden;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background-color: var(--bg-light);
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            box-shadow: -15px 15px 0px rgba(30, 41, 59, 0.5);
+        }
+
+        .about-text {
+            background: rgba(30, 41, 59, 0.6);
+            padding: 3rem;
+            border-radius: 4px;
+            border-right: 4px solid var(--accent);
+            transform: translateX(100px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .about-text.appear {
+            transform: translateX(20px);
+            opacity: 1;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Seção Competências */
+        .services-box {
+            max-width: 1200px;
+            margin: 0 auto 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: var(--bg-light);
+            padding: 2.5rem 2rem;
+            border-radius: 4px;
+            border-top: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            border-top: 3px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-item i {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-item h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* FAQ */
+        .faq-section {
+            max-width: 1000px;
+            margin: 0 auto 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .faq-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 2px solid var(--accent);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .faq-item.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faq-item h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Rodapé Fixo na Tela (Bottom da página) e Efeito de Digitação */
+        .typewriter-section {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #050811 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+        }
+
+        .typewriter-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--accent);
+            min-height: 3rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--accent);
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .contact-actions.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-btn i {
+            font-size: 1.2rem;
+        }
+
+        .btn-whatsapp { background-color: #25d366; color: #fff; border-color: #25d366; }
+        .btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border: none; }
+        .btn-email { background-color: var(--bg-light); color: var(--text-light); }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            filter: brightness(1.1);
+        }
+
+        footer {
+            background-color: #020617;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Botão Flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .about-section { grid-template-columns: 1fr; gap: 2rem; }
+            .about-text { transform: translateX(0); padding: 2rem; }
+            .about-text.appear { transform: translateX(0); }
+            .typewriter-container h2 { font-size: 1.5rem; }
+            .contact-actions { flex-direction: column; align-items: stretch; }
+            .contact-btn { justify-content: center; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+
+.about-image {
+    width: 100%;
+    max-width: 400px; /* Ajuste conforme o layout */
+    overflow: hidden;
+    border-radius: 8px; /* Opcional: cantos levemente arredondados */
+    border: 1px solid #ddd;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.slide-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 15%;
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-dark) 100%);
+}
+
+.slide-content i {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--text-light);
+    font-style: italic;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.quote-author {
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+/* Ajuste de responsividade */
+@media (max-width: 768px) {
+    .quote-text { font-size: 1.5rem; }
+    .slide-content { padding: 0 10%; }
+}
+
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/5534998608592" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="content-wrapper">
+        <header>
+            <h1>Marcos Braga Advocacia</h1>
+            <h3> OAB/MG 239.534</h3>
+            <div class="subtitle">Excelência, Ética e Estratégia Jurídica</div>
+        </header>
+<!-- Essa é a parte das img do carrossel-->
+        <main>
+    <section class="carousel-container">
+        <div class="carousel-inner">
+            
+            <div class="slide active">
+                <div class="slide-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="quote-text">"A justiça não consiste em ser neutro entre o certo e o errado, mas em descobrir o certo e sustentá-lo, onde quer que ele se encontre."</p>
+                    <span class="quote-author">— Theodore Roosevelt.</span>
+                </div>
+            </div> <div class="slide">
+                <img src="img/AdobeStock_783062635.jpg" alt="Escritório">
+            </div>
+
+            <div class="slide">
+                <img src="img/Comarca de Patos de Minas - 2.jpg" alt="Livros jurídicos">
+            </div>
+
+            <div class="slide">
+                <img src="img/pexels-photo-8292793.jpg" alt="Advogado trabalhando">
+            </div>
+
+        </div> <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
+        <div class="dots-container">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+</main>
+
+            </section>
+
+            <section class="about-section">
+                <div class="about-image">
+            <img src="img/m2.jpeg" alt="Fotografia Profissional" class="profile-img">
+                </div>
+                
+                <div class="about-text" id="about-text">
+                    <h3>Quem sou eu</h3>
+                    <p>
+                        Meu nome é Marcos Vinícius, Advogado cadastrado na OAB/MG nº 239.534. Minha trajetória jurídica é estruturada na união entre o conhecimento técnico sólido e a simplicidade do dia a dia, atuo especialemente, em áreas do direito Civil e Saúde, além de consultorias em diversas outros temas, como trabalhista, administrativo e penal.
+                    </p>
+                    <p>
+                        Meu compromisso é garantir que você receba um acompanhamento ético, direto e altamente estratégico. Trabalho para transformar o Direito em uma ferramenta acessível, traduzindo as complexidades da lei em soluções práticas e seguras para o seu cotidiano profissional ou pessoal.
+                    </p>
+                </div>
+            </section>
+
+            <section class="services-box">
+                <h2 class="section-title">Nossas <span>Competências</span></h2>
+                <div class="services-list">
+                    <div class="service-item">
+                        <h3><i class="fas fa-gavel"></i> Direito Civil</h3>
+                        <p>Medicamentos e tratamentos de alto custo, direito do consumidor, consultoria sobre contratos e negócios.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-users"></i> Direito de Família</h3>
+                        <p>Divórcios, pensão alimentícia, guarda e inventários com sensibilidade e agilidade.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-briefcase"></i> Direito Trabalhista</h3>
+                        <p>Assessoria completa para empresas e trabalhadores, atuando na defesa de interesses profissionais.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-hand-holding-heart"></i> Direito Previdenciário</h3>
+                        <p>Auxílio para obtenção e defesa de aposentadorias, pensões e benefícios do INSS.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fa-solid fa-user"></i> Atendimento Especializado</h3>
+                        <p>Aqui você encontra atendimento presencial em Patos de Minas, Lagoa Formosa e região, além de consultoria online em todo o Brasil.</p>
+                     </div>
+                    <div class="service-item">
+                        <h3><i class="fa-solid fa-scale-balanced"></i> Compromisso e Ética</h3>
+                        <p>Nosso objetivo é traduzir a complexidade das leis em resultados práticos, prezando sempre pela transparência e atendimento humanizado.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3>Quais documentos devo levar para a primeira consulta?</h3>
+                        <p>Para agilizar o atendimento, traga seu RG, CPF, comprovante de residência atualizado e todos os documentos relacionados ao caso (contratos, fotos, mensagens ou notificações judiciais).</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Você realiza atendimento em domicílio?</h3>
+                        <p>Sim. Realizamos consultoria via videoconferência e presencial, além atendimento via WhatsApp para clientes de qualquer região, garantindo a mesma segurança do atendimento presencial.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Como funcionam os honorários advocatícios?</h3>
+                        <p>Os valores são estabelecidos com base na complexidade da causa e seguem a tabela de honorários da OAB. A forma de pagamento é discutida com transparência logo no início do contrato.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Nova Seção: Efeito de Digitação e Contatos -->
+            <section class="typewriter-section" id="contact-section">
+                <div class="typewriter-container">
+                    <h2>
+                        <span id="typewriter-text"></span><span class="cursor">&nbsp;</span>
+                    </h2>
+                    
+                    <div class="contact-actions" id="contact-actions">
+                        <a href="https://wa.me/5534998608592" target="_blank" class="contact-btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> (34) 9 9860-8592
+                        </a>
+                        <a href="https://instagram.com/marcosvbraga.adv" target="_blank" class="contact-btn btn-instagram">
+                            <i class="fab fa-instagram"></i> @marcosvbraga.adv
+                        </a>
+                        <a href="mailto:marcoslagoa4928@gmail.com" class="contact-btn btn-email">
+                            <i class="fas fa-envelope"></i> marcoslagoa4928@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="copyright">
+                <p>&copy; 2026 Marcos Braga Advocacia. Todos os direitos reservados. Patos de Minas, MG - Lagoa Formosa e Região.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        /* Controle do Carrossel */
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlides(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slideIndex = n >= slides.length ? 0 : n < 0 ? slides.length - 1 : n;
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        function changeSlide(n) { showSlides(slideIndex + n); }
+        function currentSlide(n) { showSlides(n); }
+        
+        setInterval(() => changeSlide(1), 6000);
+
+        /* Intersection Observer Genérico (Sobre Mim e FAQ) */
+        const observerOptions = { threshold: 0.2 };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const aboutText = document.getElementById('about-text');
+        if (aboutText) scrollObserver.observe(aboutText);
+
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.15}s`;
+            scrollObserver.observe(item);
+        });
+
+        /* Lógica do Efeito de Digitação ao Chegar no Final */
+        const textToType = "A justiça não espera. Escolha o canal de sua preferência e receba um atendimento estratégico e personalizado para o seu caso.";
+        const typeElement = document.getElementById("typewriter-text");
+        const contactActions = document.getElementById("contact-actions");
+        let typeIndex = 0;
+        let typingStarted = false;
+
+        function typeWriter() {
+            if (typeIndex < textToType.length) {
+                typeElement.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriter, 40); 
+            } else {
+                contactActions.classList.add("appear");
+            }
+        }
+
+        const typeSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !typingStarted) {
+                    typingStarted = true;
+                    typeWriter();
+                }
+            });
+        }, { threshold: 0.5 }); // Inicia quando 50% da seção estiver visível
+
+        const contactSection = document.getElementById("contact-section");
+        if (contactSection) {
+            typeSectionObserver.observe(contactSection);
+        }
+    </script>
+</body>
+</html>
