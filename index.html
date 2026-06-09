@@ -1,8 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18207326539"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -10,6 +8,15 @@
   gtag('js', new Date());
 
   gtag('config', 'AW-18207326539');
+
+  // Função para rastrear o clique no WhatsApp
+  function trackWhatsAppClick() {
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18207326539/qlUHCIDK97scEMuC9-lD',
+          'value': 1.0,
+          'currency': 'BRL'
+      });
+  }
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -476,7 +483,7 @@
 </head>
 <body>
 
-    <a href="https://wa.me/5534998608592" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5534998608592" class="whatsapp-float" target="_blank" onclick="trackWhatsAppClick()">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -593,7 +600,7 @@
                     </h2>
                     
                     <div class="contact-actions" id="contact-actions">
-                        <a href="https://wa.me/5534998608592" target="_blank" class="contact-btn btn-whatsapp">
+                        <a href="https://wa.me/5534998608592" target="_blank" class="contact-btn btn-whatsapp" onclick="trackWhatsAppClick()">
                             <i class="fab fa-whatsapp"></i> (34) 9 9860-8592
                         </a>
                         <a href="mailto:marcoslagoa4928@gmail.com" class="contact-btn btn-email">
