@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta name="google-site-verification" content="w65TG80dhnSmJ-LaeuGuk_GYClqgQo5q7mVsOv4_Nbk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcos Braga - Advogado</title>
+    <title>Marcos Braga - Advogado em Direito da Saúde e Civil</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +35,6 @@
             overflow-x: hidden;
         }
 
-        /* Estrutura Principal */
         .content-wrapper {
             background-color: var(--bg-dark);
             position: relative;
@@ -60,6 +60,14 @@
             margin-bottom: 0.5rem;
         }
 
+        h3.oab {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
         .subtitle {
             font-size: 1.2rem;
             color: var(--text-muted);
@@ -68,7 +76,6 @@
             text-transform: uppercase;
         }
 
-        /* Carrossel */
         .carousel-container {
             position: relative;
             width: 100%;
@@ -148,7 +155,6 @@
             transform: scale(1.3);
         }
 
-        /* Seção Sobre Mim */
         .about-section {
             max-width: 1200px;
             margin: 0 auto 6rem auto;
@@ -162,16 +168,18 @@
 
         .about-image {
             width: 100%;
-            aspect-ratio: 3/4;
-            background-color: var(--bg-light);
-            border-radius: 4px;
-            border-left: 4px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            box-shadow: -15px 15px 0px rgba(30, 41, 59, 0.5);
+            max-width: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         .about-text {
@@ -203,7 +211,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Seção Competências */
         .services-box {
             max-width: 1200px;
             margin: 0 auto 6rem auto;
@@ -260,7 +267,6 @@
             line-height: 1.6;
         }
 
-        /* FAQ */
         .faq-section {
             max-width: 1000px;
             margin: 0 auto 6rem auto;
@@ -299,7 +305,6 @@
             line-height: 1.6;
         }
 
-        /* Rodapé Fixo na Tela (Bottom da página) e Efeito de Digitação */
         .typewriter-section {
             background: linear-gradient(135deg, var(--bg-dark) 0%, #050811 100%);
             padding: 6rem 2rem;
@@ -365,7 +370,6 @@
         }
 
         .btn-whatsapp { background-color: #25d366; color: #fff; border-color: #25d366; }
-        .btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border: none; }
         .btn-email { background-color: var(--bg-light); color: var(--text-light); }
 
         .contact-btn:hover {
@@ -387,7 +391,6 @@
             font-size: 0.9rem;
         }
 
-        /* Botão Flutuante WhatsApp */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -413,6 +416,42 @@
             background-color: #128c7e;
         }
 
+        .slide-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 15%;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-dark) 100%);
+        }
+
+        .slide-content i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--text-light);
+            font-style: italic;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-author {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             .about-section { grid-template-columns: 1fr; gap: 2rem; }
@@ -422,65 +461,9 @@
             .contact-actions { flex-direction: column; align-items: stretch; }
             .contact-btn { justify-content: center; }
             .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+            .quote-text { font-size: 1.5rem; }
+            .slide-content { padding: 0 10%; }
         }
-
-.about-image {
-    width: 100%;
-    max-width: 400px; /* Ajuste conforme o layout */
-    overflow: hidden;
-    border-radius: 8px; /* Opcional: cantos levemente arredondados */
-    border: 1px solid #ddd;
-}
-
-.profile-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-
-.slide-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 15%;
-    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-dark) 100%);
-}
-
-.slide-content i {
-    font-size: 2.5rem;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    opacity: 0.5;
-}
-
-.quote-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: var(--text-light);
-    font-style: italic;
-    line-height: 1.4;
-    margin-bottom: 1.5rem;
-}
-
-.quote-author {
-    color: var(--accent);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-}
-
-/* Ajuste de responsividade */
-@media (max-width: 768px) {
-    .quote-text { font-size: 1.5rem; }
-    .slide-content { padding: 0 10%; }
-}
-
     </style>
 </head>
 <body>
@@ -492,58 +475,57 @@
     <div class="content-wrapper">
         <header>
             <h1>Marcos Braga Advocacia</h1>
-            <h3> OAB/MG 239.534</h3>
-            <div class="subtitle">Excelência, Ética e Estratégia Jurídica</div>
+            <h3 class="oab">OAB/MG 239.534</h3>
+            <div class="subtitle">Especialidade em Direito da Saúde e Cível</div>
         </header>
-<!-- Essa é a parte das img do carrossel-->
+
         <main>
-    <section class="carousel-container">
-        <div class="carousel-inner">
-            
-            <div class="slide active">
-                <div class="slide-content">
-                    <i class="fas fa-quote-left"></i>
-                    <p class="quote-text">"A justiça não consiste em ser neutro entre o certo e o errado, mas em descobrir o certo e sustentá-lo, onde quer que ele se encontre."</p>
-                    <span class="quote-author">— Theodore Roosevelt.</span>
+            <section class="carousel-container">
+                <div class="carousel-inner">
+                    <div class="slide active">
+                        <div class="slide-content">
+                            <i class="fas fa-quote-left"></i>
+                            <p class="quote-text">"A justiça não consiste em ser neutro entre o certo e o errado, mas em descobrir o certo e sustentá-lo, onde quer que ele se encontre."</p>
+                            <span class="quote-author">— Theodore Roosevelt.</span>
+                        </div>
+                    </div> 
+                    
+                    <div class="slide">
+                        <img src="img/AdobeStock_783062635.jpg" alt="Escritório">
+                    </div>
+
+                    <div class="slide">
+                        <img src="img/Comarca de Patos de Minas - 2.jpg" alt="Fórum e Justiça">
+                    </div>
+
+                    <div class="slide">
+                        <img src="img/pexels-photo-8292793.jpg" alt="Advogado trabalhando">
+                    </div>
+                </div> 
+                
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
+                <div class="dots-container">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
                 </div>
-            </div> <div class="slide">
-                <img src="img/AdobeStock_783062635.jpg" alt="Escritório">
-            </div>
-
-            <div class="slide">
-                <img src="img/Comarca de Patos de Minas - 2.jpg" alt="Livros jurídicos">
-            </div>
-
-            <div class="slide">
-                <img src="img/pexels-photo-8292793.jpg" alt="Advogado trabalhando">
-            </div>
-
-        </div> <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="next" onclick="changeSlide(1)">&#10095;</button>
-
-        <div class="dots-container">
-            <span class="dot active" onclick="currentSlide(0)"></span>
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
-    </section>
-</main>
-
             </section>
 
             <section class="about-section">
                 <div class="about-image">
-            <img src="img/m2.jpeg" alt="Fotografia Profissional" class="profile-img">
+                    <img src="img/m2.jpeg" alt="Fotografia Profissional Marcos Braga" class="profile-img">
                 </div>
                 
                 <div class="about-text" id="about-text">
                     <h3>Quem sou eu</h3>
                     <p>
-                        Meu nome é Marcos Vinícius, Advogado cadastrado na OAB/MG nº 239.534. Minha trajetória jurídica é estruturada na união entre o conhecimento técnico sólido e a simplicidade do dia a dia, atuo especialemente, em áreas do direito Civil e Saúde, além de consultorias em diversas outros temas, como trabalhista, administrativo e penal.
+                        Meu nome é Marcos Vinícius, Advogado (OAB/MG nº 239.534). Minha trajetória jurídica é estruturada na união entre o conhecimento técnico e a busca por resultados rápidos. Atuo incisivamente no <strong>Direito da Saúde</strong> e <strong>Direito Civil</strong>, combatendo práticas abusivas e garantindo o acesso aos seus direitos.
                     </p>
                     <p>
-                        Meu compromisso é garantir que você receba um acompanhamento ético, direto e altamente estratégico. Trabalho para transformar o Direito em uma ferramenta acessível, traduzindo as complexidades da lei em soluções práticas e seguras para o seu cotidiano profissional ou pessoal.
+                        Seja na obtenção de medicamentos de alto custo negados pelo Estado, ou em ações contra negativas de planos de saúde, trabalho com agilidade (via pedidos liminares) para garantir que a burocracia não coloque a sua saúde ou o seu patrimônio em risco.
                     </p>
                 </div>
             </section>
@@ -552,28 +534,28 @@
                 <h2 class="section-title">Nossas <span>Competências</span></h2>
                 <div class="services-list">
                     <div class="service-item">
+                        <h3><i class="fas fa-heartbeat"></i> Planos de Saúde</h3>
+                        <p>Atuação contra negativas de cirurgias, exames, internações, home care, cancelamentos indevidos e reajustes abusivos nas mensalidades.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-pills"></i> Medicamentos de Alto Custo</h3>
+                        <p>Ações judiciais para obrigar o SUS ou o plano de saúde a fornecer medicamentos oncológicos, raros e tratamentos específicos não incorporados.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-file-medical"></i> Erro Médico e Odontológico</h3>
+                        <p>Defesa e ações de indenização por danos materiais, morais e estéticos decorrentes de falhas na prestação de serviços de saúde.</p>
+                    </div>
+                    <div class="service-item">
                         <h3><i class="fas fa-gavel"></i> Direito Civil</h3>
-                        <p>Medicamentos e tratamentos de alto custo, direito do consumidor, consultoria sobre contratos e negócios.</p>
+                        <p>Indenizações em geral, responsabilidade civil, elaboração e revisão de contratos, defesa do consumidor e cobranças judiciais.</p>
                     </div>
                     <div class="service-item">
                         <h3><i class="fas fa-users"></i> Direito de Família</h3>
-                        <p>Divórcios, pensão alimentícia, guarda e inventários com sensibilidade e agilidade.</p>
+                        <p>Acompanhamento de divórcios, fixação e revisão de pensão alimentícia, guarda de menores e inventários.</p>
                     </div>
                     <div class="service-item">
-                        <h3><i class="fas fa-briefcase"></i> Direito Trabalhista</h3>
-                        <p>Assessoria completa para empresas e trabalhadores, atuando na defesa de interesses profissionais.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3><i class="fas fa-hand-holding-heart"></i> Direito Previdenciário</h3>
-                        <p>Auxílio para obtenção e defesa de aposentadorias, pensões e benefícios do INSS.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3><i class="fa-solid fa-user"></i> Atendimento Especializado</h3>
-                        <p>Aqui você encontra atendimento presencial em Patos de Minas, Lagoa Formosa e região, além de consultoria online em todo o Brasil.</p>
-                     </div>
-                    <div class="service-item">
-                        <h3><i class="fa-solid fa-scale-balanced"></i> Compromisso e Ética</h3>
-                        <p>Nosso objetivo é traduzir a complexidade das leis em resultados práticos, prezando sempre pela transparência e atendimento humanizado.</p>
+                        <h3><i class="fa-solid fa-bolt"></i> Atendimento Ágil</h3>
+                        <p>Atendimento presencial na região de Patos de Minas e digital em todo o Brasil. Foco em medidas de urgência (liminares) para preservação da saúde.</p>
                     </div>
                 </div>
             </section>
@@ -582,21 +564,20 @@
                 <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
                 <div class="faq-container">
                     <div class="faq-item">
-                        <h3>Quais documentos devo levar para a primeira consulta?</h3>
-                        <p>Para agilizar o atendimento, traga seu RG, CPF, comprovante de residência atualizado e todos os documentos relacionados ao caso (contratos, fotos, mensagens ou notificações judiciais).</p>
+                        <h3>O plano de saúde negou minha cirurgia ou exame. O que fazer?</h3>
+                        <p>Guarde a negativa por escrito e os laudos médicos. Com esses documentos, podemos ingressar com uma ação judicial com pedido de liminar para obrigar o plano a custear o tratamento imediatamente.</p>
                     </div>
                     <div class="faq-item">
-                        <h3>Você realiza atendimento em domicílio?</h3>
-                        <p>Sim. Realizamos consultoria via videoconferência e presencial, além atendimento via WhatsApp para clientes de qualquer região, garantindo a mesma segurança do atendimento presencial.</p>
+                        <h3>O SUS ou o plano se recusa a fornecer meu medicamento de alto custo. Posso processar?</h3>
+                        <p>Sim. A saúde é um direito constitucional. Havendo relatório médico fundamentando a necessidade e a urgência do remédio, é possível acionar a Justiça para forçar o fornecimento.</p>
                     </div>
                     <div class="faq-item">
-                        <h3>Como funcionam os honorários advocatícios?</h3>
-                        <p>Os valores são estabelecidos com base na complexidade da causa e seguem a tabela de honorários da OAB. A forma de pagamento é discutida com transparência logo no início do contrato.</p>
+                        <h3>Quais documentos preciso para uma ação de saúde?</h3>
+                        <p>Documentos pessoais (RG/CPF), carteira do plano (se houver), laudo médico detalhado com a CID da doença e a urgência do tratamento, além da recusa formal do plano ou do SUS.</p>
                     </div>
                 </div>
             </section>
             
-            <!-- Nova Seção: Efeito de Digitação e Contatos -->
             <section class="typewriter-section" id="contact-section">
                 <div class="typewriter-container">
                     <h2>
@@ -606,7 +587,6 @@
                     <div class="contact-actions" id="contact-actions">
                         <a href="https://wa.me/5534998608592" target="_blank" class="contact-btn btn-whatsapp">
                             <i class="fab fa-whatsapp"></i> (34) 9 9860-8592
-                        </a>
                         </a>
                         <a href="mailto:marcoslagoa4928@gmail.com" class="contact-btn btn-email">
                             <i class="fas fa-envelope"></i> marcoslagoa4928@gmail.com
@@ -624,7 +604,6 @@
     </div>
 
     <script>
-        /* Controle do Carrossel */
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
@@ -644,7 +623,6 @@
         
         setInterval(() => changeSlide(1), 6000);
 
-        /* Intersection Observer Genérico (Sobre Mim e FAQ) */
         const observerOptions = { threshold: 0.2 };
 
         const scrollObserver = new IntersectionObserver((entries) => {
@@ -665,8 +643,7 @@
             scrollObserver.observe(item);
         });
 
-        /* Lógica do Efeito de Digitação ao Chegar no Final */
-        const textToType = "A justiça não espera. Escolha o canal de sua preferência e receba um atendimento estratégico e personalizado para o seu caso.";
+        const textToType = "A saúde e os seus direitos não podem esperar. Entre em contato e receba uma análise estratégica do seu caso.";
         const typeElement = document.getElementById("typewriter-text");
         const contactActions = document.getElementById("contact-actions");
         let typeIndex = 0;
@@ -689,7 +666,7 @@
                     typeWriter();
                 }
             });
-        }, { threshold: 0.5 }); // Inicia quando 50% da seção estiver visível
+        }, { threshold: 0.5 }); 
 
         const contactSection = document.getElementById("contact-section");
         if (contactSection) {
